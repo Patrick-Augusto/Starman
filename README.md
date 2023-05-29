@@ -116,7 +116,7 @@ Antes de executar a aplicação, é necessário configurar o banco de dados loca
 ## Diagrama do Banco de Dados
 
 O banco de dados utilizado pela aplicação possui a seguinte estrutura:
-
+```csharp
    +------------------+
       | StockItem |
    +------------------+
@@ -125,7 +125,7 @@ O banco de dados utilizado pela aplicação possui a seguinte estrutura:
       | Quantity |
       | UnitPrice |
    +------------------+
-
+```
 A tabela `StockItem` representa a entidade de estoque, com os campos mencionados acima.
 
 ## Executando a Aplicação
