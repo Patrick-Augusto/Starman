@@ -1,309 +1,147 @@
 body {
-    font-family: sans-serif;
-    margin: 0;
-    padding: 0;
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  text-align: center;
+  margin-top: 0;
+}
+
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 10px;
+}
+
+input {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+button {
+  background-color: #337ab7;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+}
+
+#stockItems {
+  margin-top: 20px;
+  list-style-type: none;
+  padding: 0;
+}
+
+.stockItem {
+  border: 1px solid #ccc;
+  margin-bottom: 10px;
+  padding: 10px;
+}
+
+.stockItem:hover {
+  background-color: #f0f0f0;
+}
+
+.stockItem-name {
+  font-weight: bold;
+}
+
+.stockItem-quantity {
+  float: right;
+}
+
+.stockItem-unitPrice {
+  float: right;
+  margin-right: 10px;
+}
+
+.stockItem-remove {
+  float: right;
+  cursor: pointer;
+}
+
+.space-bg {
+  background-image: url(https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/The_Milky_Way_over_Death_Valley.jpg/1200px-The_Milky_Way_over_Death_Valley.jpg);
+  background-size: cover;
+  min-height: 100vh;
+}
+
+.planet {
+  width: 100px;
+  height: 100px;
+  background-color: #fff;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: spin 10s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
   }
-  
-  h1 {
-    text-align: center;
-    margin-top: 0;
+  100% {
+    transform: rotate(360deg);
   }
-  
-  div {
-    width: 500px;
-    margin: 0 auto;
-    padding: 10px;
-    border: 1px solid #ccc;
-  }
-  
-  input {
-    width: 100%;
-    margin-bottom: 10px;
-  }
-  
-  button {
-    background-color: #337ab7;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    cursor: pointer;
-  }
-  
-  #stockItems {
-    margin-top: 20px;
-    list-style-type: none;
-    padding: 0;
-  }
-  
-  .stockItem {
-    border: 1px solid #ccc;
-    margin-bottom: 10px;
-    padding: 10px;
-  }
-  
-  .stockItem:hover {
-    background-color: #f0f0f0;
-  }
-  
-  .stockItem-name {
-    font-weight: bold;
-  }
-  
-  .stockItem-quantity {
-    float: right;
-  }
-  
-  .stockItem-unitPrice {
-    float: right;
-    margin-right: 10px;
-  }
-  
-  .stockItem-remove {
-    float: right;
-    cursor: pointer;
-  }
-  
-  .space-bg {
-    background-image: url(https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/The_Milky_Way_over_Death_Valley.jpg/1200px-The_Milky_Way_over_Death_Valley.jpg);
-    background-size: cover;
-    height: 100vh;
-    width: 100vw;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: -1;
-  }
-  
-  .planet {
-    width: 100px;
-    height: 100px;
-    background-color: #fff;
-    border-radius: 50%;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    animation: spin 10s linear infinite;
-  }
-  
-  @keyframes spin {
-    0% {
-      transform: rotate(0deg);
-    }
-    100% {
-      transform: rotate(360deg);
-    }
-  }
-  
-  .ui-ux {
-    margin-top: 50px;
-  }
-  
-  .ui-ux h1 {
-    color: #fff;
-  }
-  
-  .ui-ux input {
-    background-color: #fff;
-    color: #337ab7;
-  }
-  
-  .ui-ux button {
-    background-color: #fff;
-    color: #337ab7;
-  }
-  
-  .add-product-form {
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 200px;
-    height: 100%;
-    background-color: #fff;
-    z-index: 1;
-  }
-  
-  .product-image {
-    width: 100%;
-    height: 100px;
-  }
-  
-  .product-name {
-    margin-top: 10px;
-    font-size: 18px;
-  }
-  
-  .product-price {
-    margin-top: 10px;
-    font-size: 16px;
-  }
-  
-  .product-quantity {
-    margin-top: 10px;
-    font-size: 14px;
-  }
-  
-  .product-add-button {
-    margin-top: 10px;
-    background-color: #337ab7;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    cursor: pointer;
-  }
-  
-  body {
-    font-family: sans-serif;
-    margin: 0;
-    padding: 0;
-  }
-  
-  h1 {
-    text-align: center;
-    margin-top: 0;
-  }
-  
-  div {
-    width: 500px;
-    margin: 0 auto;
-    padding: 10px;
-    border: 1px solid #ccc;
-  }
-  
-  input {
-    width: 100%;
-    margin-bottom: 10px;
-  }
-  
-  button {
-    background-color: #337ab7;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    cursor: pointer;
-  }
-  
-  #stockItems {
-    margin-top: 20px;
-    list-style-type: none;
-    padding: 0;
-  }
-  
-  .stockItem {
-    border: 1px solid #ccc;
-    margin-bottom: 10px;
-    padding: 10px;
-  }
-  
-  .stockItem:hover {
-    background-color: #f0f0f0;
-  }
-  
-  .stockItem-name {
-    font-weight: bold;
-  }
-  
-  .stockItem-quantity {
-    float: right;
-  }
-  
-  .stockItem-unitPrice {
-    float: right;
-    margin-right: 10px;
-  }
-  
-  .stockItem-remove {
-    float: right;
-    cursor: pointer;
-  }
-  
-  .space-bg {
-    background-image: url(https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/The_Milky_Way_over_Death_Valley.jpg/1200px-The_Milky_Way_over_Death_Valley.jpg);
-    background-size: cover;
-    height: 100vh;
-    width: 100vw;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: -1;
-  }
-  
-  .planet {
-    width: 100px;
-    height: 100px;
-    background-color: #fff;
-    border-radius: 50%;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    animation: spin 10s linear infinite;
-  }
-  
-  @keyframes spin {
-    0% {
-      transform: rotate(0deg);
-    }
-    100% {
-      transform: rotate(360deg);
-    }
-  }
-  
-  .ui-ux {
-    margin-top: 50px;
-  }
-  
-  .ui-ux h1 {
-    color: #fff;
-  }
-  
-  .ui-ux input {
-    background-color: #fff;
-    color: #337ab7;
-  }
-  
-  .ui-ux button {
-    background-color: #fff;
-    color: #337ab7;
-  }
-  
-  .add-product-form {
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 200px;
-    height: 100%;
-    background-color: #fff;
-    z-index: 1;
-  }
-  
-  .product-image {
-    width: 100%;
-    height: 100px;
-  }
-  
-  .product-name {
-    margin-top: 10px;
-    font-size: 18px;
-  }
-  
-  .product-price {
-    margin-top: 10px;
-    font-size: 16px;
-  }
-  
-  .product-quantity {
-    margin-top: 10px;
-    font-size: 14px;
-  }
-  
-  .product-add-button {
-    margin-top: 10px;
-    background-color: #337ab7;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    cursor: pointer;
-  }
-  
-  
+}
+
+.ui-ux {
+  margin-top: 50px;
+}
+
+.ui-ux h1 {
+  color: #fff;
+}
+
+.ui-ux input {
+  background-color: #fff;
+  color: #337ab7;
+}
+
+.ui-ux button {
+  background-color: #fff;
+  color: #337ab7;
+}
+
+.add-product-form {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 200px;
+  height: 100%;
+  background-color: #fff;
+  z-index: 1;
+}
+
+.product-image {
+  width: 100%;
+  height: 100px;
+}
+
+.product-name {
+  margin-top: 10px;
+  font-size: 18px;
+}
+
+.product-price {
+  margin-top: 10px;
+  font-size: 16px;
+}
+
+.product-quantity {
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+.product-add-button {
+  margin-top: 10px;
+  background-color: #337ab7;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+}
