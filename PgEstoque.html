@@ -1,53 +1,53 @@
 <!DOCTYPE html>
 <html lang="en" xml:lang="en">
 <head>
-<title>Stock Control</title>
+<title>Controle de Estoque</title>
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<h1>Stock Control</h1>
+<h1>Controle de Estoque</h1>
 <div>
-<input type="text" id="name" placeholder="Name">
-<input type="text" id="quantity" placeholder="Quantity">
-<input type="text" id="unitPrice" placeholder="Unit Price">
-<button onclick="addStockItem()">Add Stock Item</button>
+<input type="text" id="name" placeholder="Nome">
+<input type="text" id="quantity" placeholder="Quantidade">
+<input type="text" id="unitPrice" placeholder="Preço Unitário">
+<button onclick="addStockItem()">Adicionar Item de Estoque</button>
 </div>
 <div id="stockItems"></div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
 function addStockItem() {
-    // Get the values from the form
-    var name = $("#name").val();
-    var quantity = $("#quantity").val();
-    var unitPrice = $("#unitPrice").val();
+    // Obter os valores do formulário
+    var nome = $("#name").val();
+    var quantidade = $("#quantity").val();
+    var precoUnitario = $("#unitPrice").val();
 
-    // Create a new stock item
-    var stockItem = {
-        Name: name,
-        Quantity: quantity,
-        UnitPrice: unitPrice
+    // Criar um novo item de estoque
+    var itemEstoque = {
+        Nome: nome,
+        Quantidade: quantidade,
+        PrecoUnitario: precoUnitario
     };
 
-    // Add the stock item to the databasePai
+    // Adicionar o item de estoque ao banco de dados
     $.ajax({
         url: "/addStockItem",
         type: "POST",
-        data: JSON.stringify(stockItem),
+        data: JSON.stringify(itemEstoque),
         contentType: "application/json",
         success: function(data) {
-            // Refresh the stock items list
+            // Atualizar a lista de itens de estoque
             refreshStockItems();
         }
     });
 }
 
 function refreshStockItems() {
-    // Get the stock items from the database
+    // Obter os itens de estoque do banco de dados
     $.ajax({
         url: "/getStockItems",
         type: "GET",
         success: function(data) {
-            // Populate the stock items list
+            // Preencher a lista de itens de estoque
             $("#stockItems").html(data);
         }
     });
@@ -58,12 +58,12 @@ $(document).ready(function() {
 });
 
 function removeStockItem(id) {
-    // Get the stock item from the database
+    // Obter o item de estoque do banco de dados
     $.ajax({
         url: "/removeStockItem/" + id,
         type: "GET",
         success: function(data) {
-            // Refresh the stock items list
+            // Atualizar a lista de itens de estoque
             refreshStockItems();
         }
     });
