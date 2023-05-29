@@ -10,18 +10,18 @@ namespace ConsoleApplication1
     {
         static void Main(string[] args)
         {
-            // Criar uma string de conexão.
+            // Create a connection string.
             string connectionString = "Data Source=localhost;Initial Catalog=mydb;Integrated Security=True;";
 
-            // Criar um contexto do Entity Framework.
+            // Create an Entity Framework context.
             var context = new MyDbContext(connectionString);
 
-            // Adicionar um novo item de estoque.
+            // Add a new stock item.
             string name = NameTextBox.Text;
             int quantity = int.Parse(QuantityTextBox.Text);
             decimal unitPrice = decimal.Parse(UnitPriceTextBox.Text);
 
-            // Criar um novo item de estoque.
+            // Create a new stock item.
             StockItem stockItem = new StockItem()
             {
                 Name = name,
@@ -29,46 +29,82 @@ namespace ConsoleApplication1
                 UnitPrice = unitPrice
             };
 
-            // Adicionar o item de estoque ao contexto.
+            // Add the stock item to the context.
             context.StockItems.Add(stockItem);
 
-            // Salvar as alterações no banco de dados.
-            context.SaveChanges();
+            // Save the changes to the database.
+            using (var transaction = context.Database.BeginTransaction())
+            {
+                try
+                {
+                    context.SaveChanges();
+                    transaction.Commit();
+                }
+                catch (Exception ex)
+                {
+                    transaction.Rollback();
+                    throw;
+                }
+            }
 
-            // Fechar o contexto.
+            // Close the context.
             context.Dispose();
 
-            // Excluir um item de estoque.
+            // Delete a stock item.
             int id = int.Parse(StockItemIdTextBox.Text);
 
-            // Excluir o item de estoque do contexto.
+            // Delete the stock item from the context.
             context.StockItems.Remove(context.StockItems.SingleOrDefault(s => s.Id == id));
 
-            // Salvar as alterações no banco de dados.
-            context.SaveChanges();
+            // Save the changes to the database.
+            using (var transaction = context.Database.BeginTransaction())
+            {
+                try
+                {
+                    context.SaveChanges();
+                    transaction.Commit();
+                }
+                catch (Exception ex)
+                {
+                    transaction.Rollback();
+                    throw;
+                }
+            }
 
-            // Fechar o contexto.
+            // Close the context.
             context.Dispose();
 
-            // Atualizar um item de estoque.
+            // Update a stock item.
             id = int.Parse(StockItemIdTextBox.Text);
             name = NameTextBox.Text;
             quantity = int.Parse(QuantityTextBox.Text);
             unitPrice = decimal.Parse(UnitPriceTextBox.Text);
 
-            // Atualizar o item de estoque no contexto.
+            // Update the stock item in the context.
             var stockItem = context.StockItems.SingleOrDefault(s => s.Id == id);
             stockItem.Name = name;
             stockItem.Quantity = quantity;
             stockItem.UnitPrice = unitPrice;
 
-            // Salvar as alterações no banco de dados.
-            context.SaveChanges();
+            // Save the changes to the database.
+            using (var transaction = context.Database.BeginTransaction())
+            {
+                try
+                {
+                    context.SaveChanges();
+                    transaction.Commit();
+                }
+                catch (Exception ex)
+                {
+                    transaction.Rollback();
+                    throw;
+                }
+            }
 
-            // Fechar o contexto.
+            // Close the context.
             context.Dispose();
 
-            // Limpar o formulário.
+            // Clear the form.
             NameTextBox.Text = "";
             QuantityTextBox.Text = "";
             UnitPriceTextBox.Text = "";
