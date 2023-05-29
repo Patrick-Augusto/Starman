@@ -98,4 +98,7 @@ namespace ConsoleApplication1
             // Limpar o formulário.
             CaixaDeTextoNome.Text = "";
             CaixaDeTextoQuantidade.Text = "";
-            CaixaDeTextoPre
+            CaixaDeTextoPrecoUnitario.Text = "";
+        }
+    }
+}
