@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Stock Control</title>
+  <link rel="stylesheet" href="styless.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+</head>
+<body ng-app="myApp">
+  <div class="container">
+    <h1>Stock Control</h1>
+    <div class="row">
+      <div class="col-md-6">
+        <form ng-submit="addStockItem()">
+          <input type="text" ng-model="name" placeholder="Name">
+          <input type="number" ng-model="quantity" placeholder="Quantity">
+          <input type="number" ng-model="unitPrice" placeholder="Unit Price">
+          <button type="submit">Add Stock Item</button>
+        </form>
+      </div>
+      <div class="col-md-6">
+        <table class="table">
+            <caption>This table shows the stock items in the database.</caption>
+            <thead>
+              <tr>
+                <th style="margin: 10px;">Name</th>
+                <th style="margin: 10px;">Quantity</th>
+                <th style="margin: 10px;">Unit Price</th>
+                <th style="margin: 10px;">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat="stockItem in stockItems | filter:isTablet">
+                <td>{{stockItem.name}}</td>
+                <td>{{stockItem.quantity}}</td>
+                <td>{{stockItem.unitPrice}}</td>
+                <td><button ng-click="removeStockItem(stockItem.id)">Remove</button></td>
+              </tr>
+            </tbody>
+          </table>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.7/angular.min.js"></script>
+  <script>
+    var app = angular.module('myApp', []);
+
+    app.controller('MainController', function($scope, $http) {
+      $scope.stockItems = [];
+
+      $http.get('api/stockitems').then(function(response) {
+        $scope.stockItems = response.data;
+      });
+
+      $scope.addStockItem = function() {
+        var stockItem = {
+          name: $scope.name,
+          quantity: $scope.quantity,
+          unitPrice: $scope.unitPrice
+        };
+
+        $http.post('api/stockitems', stockItem).then(function(response) {
+          $scope.stockItems.push(response.data);
+          $scope.name = '';
+          $scope.quantity = '';
+          $scope.unitPrice = '';
+        });
+      };
+
+      $scope.removeStockItem = function(id) {
+        $http.delete('api/stockitems/' + id).then(function(response) {
+          $scope.stockItems = $scope.stockItems.filter(function(stockItem) {
+            return stockItem.id !== id;
+          });
+        });
+      };
+
+      $scope.isTablet = function() {
+        return window.innerWidth <= 992;
+      };
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+body {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  
+  h1 {
+    text-align: center;
+    margin-top: 0;
+  }
+  
+  div {
+    width: 500px;
+    margin: 0 auto;
+    padding: 10px;
+    border: 1px solid #ccc;
+  }
+  
+  input {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  
+  button {
+    background-color: #337ab7;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  #stockItems {
+    margin-top: 20px;
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .stockItem {
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+    padding: 10px;
+  }
+  
+  .stockItem:hover {
+    background-color: #f0f0f0;
+  }
+  
+  .stockItem-name {
+    font-weight: bold;
+  }
+  
+  .stockItem-quantity {
+    float: right;
+  }
+  
+  .stockItem-unitPrice {
+    float: right;
+    margin-right: 10px;
+  }
+  
+  .stockItem-remove {
+    float: right;
+    cursor: pointer;
+  }
+  
