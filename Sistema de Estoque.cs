@@ -8,54 +8,54 @@ namespace ConsoleApplication1
     {
         static void Main(string[] args)
         {
-            // Create a connection string.
+            // Criar uma string de conexão.
             string connectionString = "Data Source=localhost;Initial Catalog=mydb;Integrated Security=True;";
 
-            // Create a connection object.
+            // Criar um objeto de conexão.
             SqlConnection connection = new SqlConnection(connectionString);
 
-            // Open the connection.
+            // Abrir a conexão.
             connection.Open();
 
-            // Do something with the database.
-            // For example, you can execute queries, retrieve data, and update data.
+            // Fazer algo com o banco de dados.
+            // Por exemplo, você pode executar consultas, recuperar dados e atualizar dados.
 
-            // Add a new stock item.
-            string name = NameTextBox.Text;
-            int quantity = int.Parse(QuantityTextBox.Text);
-            decimal unitPrice = decimal.Parse(UnitPriceTextBox.Text);
+            // Adicionar um novo item de estoque.
+            string nome = CaixaDeTextoNome.Text;
+            int quantidade = int.Parse(CaixaDeTextoQuantidade.Text);
+            decimal precoUnitario = decimal.Parse(CaixaDeTextoPrecoUnitario.Text);
 
-            // Create a new stock item.
-            StockItem stockItem = new StockItem()
+            // Criar um novo item de estoque.
+            ItemEstoque itemEstoque = new ItemEstoque()
             {
-                Name = name,
-                Quantity = quantity,
-                UnitPrice = unitPrice
+                Nome = nome,
+                Quantidade = quantidade,
+                PrecoUnitario = precoUnitario
             };
 
-            // Add the stock item to the database.
+            // Adicionar o item de estoque ao banco de dados.
             SqlCommand command = new SqlCommand("INSERT INTO StockItems (Name, Quantity, UnitPrice) VALUES (@Name, @Quantity, @UnitPrice)", connection);
             SqlParameter nameParameter = new SqlParameter("@Name", SqlDbType.NVarChar, 50);
-            nameParameter.Value = name;
+            nameParameter.Value = nome;
 
             SqlParameter quantityParameter = new SqlParameter("@Quantity", SqlDbType.Int);
-            quantityParameter.Value = quantity;
+            quantityParameter.Value = quantidade;
 
             SqlParameter unitPriceParameter = new SqlParameter("@UnitPrice", SqlDbType.Decimal);
-            unitPriceParameter.Value = unitPrice;
+            unitPriceParameter.Value = precoUnitario;
 
             command.Parameters.Add(nameParameter);
             command.Parameters.Add(quantityParameter);
             command.Parameters.Add(unitPriceParameter);
             command.ExecuteNonQuery();
 
-            // Close the connection.
+            // Fechar a conexão.
             connection.Close();
 
-            // Delete a stock item.
-            int id = int.Parse(StockItemIdTextBox.Text);
+            // Excluir um item de estoque.
+            int id = int.Parse(CaixaDeTextoIdItemEstoque.Text);
 
-            // Delete the stock item from the database.
+            // Excluir o item de estoque do banco de dados.
             command = new SqlCommand("DELETE FROM StockItems WHERE Id = @Id", connection);
             SqlParameter idParameter = new SqlParameter("@Id", SqlDbType.Int);
             idParameter.Value = id;
@@ -63,25 +63,25 @@ namespace ConsoleApplication1
             command.Parameters.Add(idParameter);
             command.ExecuteNonQuery();
 
-            // Close the connection.
+            // Fechar a conexão.
             connection.Close();
 
-            // Update a stock item.
-            id = int.Parse(StockItemIdTextBox.Text);
-            name = NameTextBox.Text;
-            quantity = int.Parse(QuantityTextBox.Text);
-            unitPrice = decimal.Parse(UnitPriceTextBox.Text);
+            // Atualizar um item de estoque.
+            id = int.Parse(CaixaDeTextoIdItemEstoque.Text);
+            nome = CaixaDeTextoNome.Text;
+            quantidade = int.Parse(CaixaDeTextoQuantidade.Text);
+            precoUnitario = decimal.Parse(CaixaDeTextoPrecoUnitario.Text);
 
-            // Update the stock item in the database.
+            // Atualizar o item de estoque no banco de dados.
             command = new SqlCommand("UPDATE StockItems SET Name = @Name, Quantity = @Quantity, UnitPrice = @UnitPrice WHERE Id = @Id", connection);
             nameParameter = new SqlParameter("@Name", SqlDbType.NVarChar, 50);
-            nameParameter.Value = name;
+            nameParameter.Value = nome;
 
             quantityParameter = new SqlParameter("@Quantity", SqlDbType.Int);
-            quantityParameter.Value = quantity;
+            quantityParameter.Value = quantidade;
 
             unitPriceParameter = new SqlParameter("@UnitPrice", SqlDbType.Decimal);
-            unitPriceParameter.Value = unitPrice;
+            unitPriceParameter.Value = precoUnitario;
 
             idParameter = new SqlParameter("@Id", SqlDbType.Int);
             idParameter.Value = id;
@@ -92,13 +92,10 @@ namespace ConsoleApplication1
             command.Parameters.Add(idParameter);
             command.ExecuteNonQuery();
 
-            // Close the connection.
+            // Fechar a conexão.
             connection.Close();
 
-            // Clear the form.
-            NameTextBox.Text = "";
-            QuantityTextBox.Text = "";
-            UnitPriceTextBox.Text = "";
-        }
-    }
-}
+            // Limpar o formulário.
+            CaixaDeTextoNome.Text = "";
+            CaixaDeTextoQuantidade.Text = "";
+            CaixaDeTextoPre
