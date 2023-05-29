@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <title>Controle de Estoque</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link rel="stylesheet" href="styless.css">
-  
 </head>
 <body ng-app="myApp">
   <div class="container">
@@ -12,7 +12,7 @@
     <div class="row">
       <div class="col-md-6">
         <form ng-submit="addStockItem()">
-          <input type="text" ng-model="name" placeholder="Nome">
+          <input type="text" ng-model="name" placeholder="Nome" one-time-binding>
           <input type="number" ng-model="quantity" placeholder="Quantidade">
           <input type="number" ng-model="unitPrice" placeholder="Preço Unitário">
           <button type="submit">Adicionar Item de Estoque</button>
@@ -46,12 +46,14 @@
   <script>
     var app = angular.module('myApp', []);
 
-    app.controller('MainController', function($scope, $http) {
+    app.controller('MainController', function($scope, $http, $cacheFactory) {
       $scope.stockItems = [];
 
       // Obter os itens de estoque do banco de dados
-      $http.get('api/stockitems').then(function(response) {
-        $scope.stockItems = response.data;
+      $cacheFactory.get('stockItems', function(cache) {
+        cache.put('stockItems', $http.get('api/stockitems').then(function(response) {
+          return response.data;
+        }));
       });
 
       // Adicionar um item de estoque
