@@ -1,12 +1,16 @@
-## Starman
+## Star Man
 
-Exemplo de Aplicativo de Gerenciamento de Itens de Estoque
+# Controle de Estoque
 
-## Descrição
+Este repositório contém um exemplo de aplicativo de controle de estoque, com um backend escrito em C# usando o Entity Framework e um frontend escrito em HTML e JavaScript.
 
-Este é um exemplo simples de um aplicativo de gerenciamento de itens de estoque usando o Entity Framework. O aplicativo permite adicionar, atualizar e excluir itens de estoque em um banco de dados.
+## Backend
 
-## Como usar
+### Descrição
+
+O backend do aplicativo é construído em C# usando o Entity Framework. Ele fornece uma API para adicionar, atualizar e excluir itens de estoque em um banco de dados.
+
+### Como usar
 
 1. Clone este repositório para sua máquina local.
 2. Certifique-se de ter o Visual Studio instalado.
@@ -15,13 +19,13 @@ Este é um exemplo simples de um aplicativo de gerenciamento de itens de estoque
 5. No método `Main`, localize a variável `connectionString` e atualize-a com as informações de conexão corretas para o seu banco de dados.
 6. Execute o aplicativo.
 
-## Requisitos
+### Requisitos
 
 - Visual Studio
 - Entity Framework
 - Banco de dados SQL Server (ou outro banco de dados compatível com o Entity Framework)
 
-## Instalação
+### Instalação
 
 1. Clone este repositório para sua máquina local.
 2. Abra o projeto no Visual Studio.
@@ -29,9 +33,9 @@ Este é um exemplo simples de um aplicativo de gerenciamento de itens de estoque
 4. Certifique-se de ter um banco de dados configurado e atualize a string de conexão no arquivo `Program.cs` com as informações corretas do banco de dados.
 5. Compile e execute o aplicativo.
 
-## Exemplos
+### Exemplos
 
-Aqui estão alguns exemplos de como usar o aplicativo:
+Aqui estão alguns exemplos de como usar o backend do aplicativo:
 
 - Adicionar um novo item de estoque:
 
@@ -88,8 +92,37 @@ context.SaveChanges();
 
 Certifique-se de substituir os valores de exemplo pelos dados corretos do item de estoque que você deseja adicionar, atualizar ou excluir.
 
-Lembre-se de fechar o contexto após cada operação e limpar o formulário, se necessário.
+Lembre-se de fechar o contexto após cada operação.
 
+## Frontend
+
+### Descrição
+
+O frontend do aplicativo é construído em HTML e JavaScript. Ele fornece uma interface simples para adicionar, visualizar e remover itens de estoque usando chamadas AJAX para a API fornecida pelo backend.
+
+### Como usar
+
+1. Abra o arquivo `index.html` em um navegador da web.
+
+### Requisitos
+
+- Navegador da web compatível com HTML5 e JavaScript
+
+### Exemplos
+
+
+
+Aqui estão alguns exemplos de como usar o frontend do aplicativo:
+
+- Adicionar um novo item de estoque: preencha os campos de entrada e clique em "Add Stock Item".
+
+- Remover um item de estoque existente: clique no botão "Remove" ao lado do item de estoque que você deseja remover.
+
+O frontend se comunicará com o backend por meio das chamadas AJAX para as rotas correspondentes.
+
+## Contribuições
+
+Contribuições são bem-vindas! Se você encontrar problemas, tiver sugestões ou quiser adicionar novos recursos, fique à vontade para enviar um pull request.
 
 ## Licença
 
