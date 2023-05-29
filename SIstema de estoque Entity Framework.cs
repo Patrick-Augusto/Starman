@@ -10,18 +10,18 @@ namespace ConsoleApplication1
     {
         static void Main(string[] args)
         {
-            // Create a connection string.
+            // Criar uma string de conexão.
             string connectionString = "Data Source=localhost;Initial Catalog=mydb;Integrated Security=True;";
 
-            // Create an Entity Framework context.
+            // Criar um contexto do Entity Framework.
             var context = new MyDbContext(connectionString);
 
-            // Add a new stock item.
+            // Adicionar um novo item de estoque.
             string name = NameTextBox.Text;
             int quantity = int.Parse(QuantityTextBox.Text);
             decimal unitPrice = decimal.Parse(UnitPriceTextBox.Text);
 
-            // Create a new stock item.
+            // Criar um novo item de estoque.
             StockItem stockItem = new StockItem()
             {
                 Name = name,
@@ -29,46 +29,46 @@ namespace ConsoleApplication1
                 UnitPrice = unitPrice
             };
 
-            // Add the stock item to the context.
+            // Adicionar o item de estoque ao contexto.
             context.StockItems.Add(stockItem);
 
-            // Save the changes to the database.
+            // Salvar as alterações no banco de dados.
             context.SaveChanges();
 
-            // Close the context.
+            // Fechar o contexto.
             context.Dispose();
 
-            // Delete a stock item.
+            // Excluir um item de estoque.
             int id = int.Parse(StockItemIdTextBox.Text);
 
-            // Delete the stock item from the context.
+            // Excluir o item de estoque do contexto.
             context.StockItems.Remove(context.StockItems.SingleOrDefault(s => s.Id == id));
 
-            // Save the changes to the database.
+            // Salvar as alterações no banco de dados.
             context.SaveChanges();
 
-            // Close the context.
+            // Fechar o contexto.
             context.Dispose();
 
-            // Update a stock item.
+            // Atualizar um item de estoque.
             id = int.Parse(StockItemIdTextBox.Text);
             name = NameTextBox.Text;
             quantity = int.Parse(QuantityTextBox.Text);
             unitPrice = decimal.Parse(UnitPriceTextBox.Text);
 
-            // Update the stock item in the context.
+            // Atualizar o item de estoque no contexto.
             var stockItem = context.StockItems.SingleOrDefault(s => s.Id == id);
             stockItem.Name = name;
             stockItem.Quantity = quantity;
             stockItem.UnitPrice = unitPrice;
 
-            // Save the changes to the database.
+            // Salvar as alterações no banco de dados.
             context.SaveChanges();
 
-            // Close the context.
+            // Fechar o contexto.
             context.Dispose();
 
-            // Clear the form.
+            // Limpar o formulário.
             NameTextBox.Text = "";
             QuantityTextBox.Text = "";
             UnitPriceTextBox.Text = "";
