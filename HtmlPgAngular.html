@@ -2,31 +2,31 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Stock Control</title>
+  <title>Controle de Estoque</title>
   <link rel="stylesheet" href="styless.css">
   
 </head>
 <body ng-app="myApp">
   <div class="container">
-    <h1>Stock Control</h1>
+    <h1>Controle de Estoque</h1>
     <div class="row">
       <div class="col-md-6">
         <form ng-submit="addStockItem()">
-          <input type="text" ng-model="name" placeholder="Name">
-          <input type="number" ng-model="quantity" placeholder="Quantity">
-          <input type="number" ng-model="unitPrice" placeholder="Unit Price">
-          <button type="submit">Add Stock Item</button>
+          <input type="text" ng-model="name" placeholder="Nome">
+          <input type="number" ng-model="quantity" placeholder="Quantidade">
+          <input type="number" ng-model="unitPrice" placeholder="Preço Unitário">
+          <button type="submit">Adicionar Item de Estoque</button>
         </form>
       </div>
       <div class="col-md-6">
         <table class="table">
-            <caption>This table shows the stock items in the database.</caption>
+            <caption>Esta tabela mostra os itens de estoque no banco de dados.</caption>
             <thead>
               <tr>
-                <th style="margin: 10px;">Name</th>
-                <th style="margin: 10px;">Quantity</th>
-                <th style="margin: 10px;">Unit Price</th>
-                <th style="margin: 10px;">Action</th>
+                <th style="margin: 10px;">Nome</th>
+                <th style="margin: 10px;">Quantidade</th>
+                <th style="margin: 10px;">Preço Unitário</th>
+                <th style="margin: 10px;">Ação</th>
               </tr>
             </thead>
             <tbody>
@@ -34,7 +34,7 @@
                 <td>{{stockItem.name}}</td>
                 <td>{{stockItem.quantity}}</td>
                 <td>{{stockItem.unitPrice}}</td>
-                <td><button ng-click="removeStockItem(stockItem.id)">Remove</button></td>
+                <td><button ng-click="removeStockItem(stockItem.id)">Remover</button></td>
               </tr>
             </tbody>
           </table>
@@ -49,10 +49,12 @@
     app.controller('MainController', function($scope, $http) {
       $scope.stockItems = [];
 
+      // Obter os itens de estoque do banco de dados
       $http.get('api/stockitems').then(function(response) {
         $scope.stockItems = response.data;
       });
 
+      // Adicionar um item de estoque
       $scope.addStockItem = function() {
         var stockItem = {
           name: $scope.name,
@@ -68,6 +70,7 @@
         });
       };
 
+      // Remover um item de estoque
       $scope.removeStockItem = function(id) {
         $http.delete('api/stockitems/' + id).then(function(response) {
           $scope.stockItems = $scope.stockItems.filter(function(stockItem) {
@@ -76,6 +79,7 @@
         });
       };
 
+      // Verificar se é um dispositivo de tamanho de tela menor ou igual a 992 pixels (considerado tablet)
       $scope.isTablet = function() {
         return window.innerWidth <= 992;
       };
