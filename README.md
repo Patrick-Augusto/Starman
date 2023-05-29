@@ -94,6 +94,53 @@ Certifique-se de substituir os valores de exemplo pelos dados corretos do item d
 
 Lembre-se de fechar o contexto após cada operação.
 
+## Banco de Dados 
+# Aplicação de Exemplo de Uso do Entity Framework
+
+Este projeto contém um exemplo de aplicação em C# que utiliza o Entity Framework para interagir com um banco de dados local. A aplicação demonstra operações básicas, como adicionar, excluir e atualizar itens de estoque.
+
+## Requisitos
+
+- Microsoft .NET Framework 4.5 ou superior
+- Microsoft SQL Server (ou outro banco de dados compatível)
+
+## Configuração do Banco de Dados
+
+Antes de executar a aplicação, é necessário configurar o banco de dados local. Siga as instruções abaixo:
+
+1. Crie um banco de dados vazio no seu servidor SQL local.
+2. Abra o arquivo `Program.cs` e localize a string de conexão (`connectionString`) na função `Main`.
+3. Substitua `localhost` pelo nome do servidor SQL, `mydb` pelo nome do banco de dados e configure as demais opções de conexão, se necessário.
+4. Salve o arquivo após realizar as alterações.
+
+## Diagrama do Banco de Dados
+
+O banco de dados utilizado pela aplicação possui a seguinte estrutura:
+
+   +------------------+
+      | StockItem |
+   +------------------+
+      | Id (PK) |
+      | Name |
+      | Quantity |
+      | UnitPrice |
+   +------------------+
+
+A tabela `StockItem` representa a entidade de estoque, com os campos mencionados acima.
+
+## Executando a Aplicação
+
+Para executar a aplicação, siga os passos abaixo:
+
+1. Abra o projeto no Visual Studio ou em outra IDE compatível com C#.
+2. Compile o projeto para garantir que não há erros.
+3. Execute a aplicação.
+4. A aplicação irá realizar as operações de exemplo no banco de dados local.
+5. Observe os resultados no console ou faça alterações no código conforme necessário.
+
+
+
+
 ## Frontend
 
 ### Descrição
