@@ -17,11 +17,23 @@ namespace ConsoleApplication1
             var context = new MyDbContext(connectionString);
 
             // Adicionar um novo item de estoque.
-            string name = NameTextBox.Text;
-            int quantity = int.Parse(QuantityTextBox.Text);
-            decimal unitPrice = decimal.Parse(UnitPriceTextBox.Text);
+            AddItem(context, NameTextBox.Text, int.Parse(QuantityTextBox.Text), decimal.Parse(UnitPriceTextBox.Text));
 
-               // Criar um novo item de estoque.
+            // Excluir um item de estoque.
+            DeleteItem(context, int.Parse(StockItemIdTextBox.Text));
+
+            // Atualizar um item de estoque.
+            UpdateItem(context, int.Parse(StockItemIdTextBox.Text), NameTextBox.Text, int.Parse(QuantityTextBox.Text), decimal.Parse(UnitPriceTextBox.Text));
+
+            // Limpar o formulário.
+            NameTextBox.Text = "";
+            QuantityTextBox.Text = "";
+            UnitPriceTextBox.Text = "";
+        }
+
+        public static void AddItem(MyDbContext context, string name, int quantity, decimal unitPrice)
+        {
+            // Criar um novo item de estoque.
             StockItem stockItem = new StockItem()
             {
                 Name = name,
@@ -46,14 +58,11 @@ namespace ConsoleApplication1
                     throw;
                 }
             }
+        }
 
-           // Fechar o contexto.
-            context.Dispose();
-
-            // Excluir um item de estoque.
-            int id = int.Parse(StockItemIdTextBox.Text);
-
-           // Excluir o item de estoque do contexto.
+        public static void DeleteItem(MyDbContext context, int id)
+        {
+            // Excluir o item de estoque do contexto.
             context.StockItems.Remove(context.StockItems.SingleOrDefault(s => s.Id == id));
 
             // Salvar as alterações no banco de dados.
@@ -70,16 +79,10 @@ namespace ConsoleApplication1
                     throw;
                 }
             }
+        }
 
-             // Fechar o contexto.
-            context.Dispose();
-
-              // Atualizar um item de estoque.
-            id = int.Parse(StockItemIdTextBox.Text);
-            name = NameTextBox.Text;
-            quantity = int.Parse(QuantityTextBox.Text);
-            unitPrice = decimal.Parse(UnitPriceTextBox.Text);
-
+        public static void UpdateItem(MyDbContext context, int id, string name, int quantity, decimal unitPrice)
+        {
             // Atualizar o item de estoque no contexto.
             var stockItem = context.StockItems.SingleOrDefault(s => s.Id == id);
             stockItem.Name = name;
@@ -100,14 +103,6 @@ namespace ConsoleApplication1
                     throw;
                 }
             }
-
-             // Fechar o contexto.
-            context.Dispose();
-
-             // Limpar o formulário.
-            NameTextBox.Text = "";
-            QuantityTextBox.Text = "";
-            UnitPriceTextBox.Text = "";
         }
     }
 
@@ -128,3 +123,4 @@ namespace ConsoleApplication1
         public decimal UnitPrice { get; set; }
     }
 }
+
