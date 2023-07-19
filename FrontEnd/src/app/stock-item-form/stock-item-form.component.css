@@ -1,1 +1,21 @@
-/* Add your custom styles for the stock-item-form component here */
+/* src/app/stock-item-form/stock-item-form.component.css */
+
+input {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+button {
+  background-color: #337ab7;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+}
+
+div {
+  width: 500px;
+  margin: 0 auto;
+  padding: 10px;
+  border: 1px solid #ccc;
+}
