@@ -1,0 +1,21 @@
+<div class="col-md-6">
+  <table class="table">
+    <caption>Esta tabela mostra os itens de estoque no banco de dados.</caption>
+    <thead>
+      <tr>
+        <th style="margin: 10px;">Nome</th>
+        <th style="margin: 10px;">Quantidade</th>
+        <th style="margin: 10px;">Preço Unitário</th>
+        <th style="margin: 10px;">Ação</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let stockItem of stockItems">
+        <td>{{ stockItem.name }}</td>
+        <td>{{ stockItem.quantity }}</td>
+        <td>{{ stockItem.unitPrice }}</td>
+        <td><button (click)="removeStockItem(stockItem.id)">Remover</button></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
