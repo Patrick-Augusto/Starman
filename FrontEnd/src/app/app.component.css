@@ -1,1 +1,10 @@
-/* Add your custom styles for the app component here */
+body {
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  text-align: center;
+  margin-top: 0;
+}
