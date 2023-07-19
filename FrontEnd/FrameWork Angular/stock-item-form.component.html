@@ -1,0 +1,9 @@
+<!-- stock-item-form.component.html -->
+<div class="col-md-6">
+  <form (ngSubmit)="addStockItem()">
+    <input type="text" [(ngModel)]="name" placeholder="Nome">
+    <input type="number" [(ngModel)]="quantity" placeholder="Quantidade">
+    <input type="number" [(ngModel)]="unitPrice" placeholder="Preço Unitário">
+    <button type="submit">Adicionar Item de Estoque</button>
+  </form>
+</div>
